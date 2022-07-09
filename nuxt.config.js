@@ -18,17 +18,17 @@ export default {
 
 		script: [
 			{
+				src: '/js/jquery/index.js',
+				type: 'text/javascript',
+				defer: true
+			},
+			{
 				src: '/js/popper.js/popper.min.js',
 				type: 'text/javascript',
 				defer: true
 			},
 			{
 				src: '/js/bootstrap.min.js',
-				type: 'text/javascript',
-				defer: true
-			},
-			{
-				src: '/js/jquery/index.js',
 				type: 'text/javascript',
 				defer: true
 			},
