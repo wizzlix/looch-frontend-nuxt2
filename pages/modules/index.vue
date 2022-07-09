@@ -1,0 +1,37 @@
+<template>
+  <div>
+
+    <main class="container">
+      <section id="pageName">
+        <PageNameH1 :page-name="pageName" />
+      </section>
+
+			<section id="table">
+
+      </section>
+
+    </main>
+
+  </div>
+</template>
+
+<script>
+
+	import PageNameH1 from '~/components/UI/PageNameH1.vue'
+
+
+
+	export default {
+		name: "CustomerMainPage",
+		components: { PageNameH1, },
+		data(){
+			  return{
+					pageName: 'Выпущенные модули',
+				}
+		},
+	}
+</script>
+
+<style lang="css">
+
+</style>
