@@ -21,16 +21,6 @@
 				</thead>
 				<!--  Body  -->
 				<tbody>
-
-<!--				compound: "ВИКПБ+ГК-172 : ЛУЧ.059.00.00.00-01 - 21617004",-->
-<!--				departure_date: "2022/05/05",-->
-<!--				from: "ООО НПП ГА \"Луч\"",-->
-<!--				to: "ПАО \"Сургутнефтегаз\" УБР-1",-->
-<!--				transfer_date: "2022/05/06",-->
-<!--				commentary: ".",-->
-<!--				status: "Доставлен"-->
-
-
 				<tr v-for="item in moveitem" :key="item.id">
 
 					<td>
@@ -44,7 +34,7 @@
 
 					</td>
 					<td>
-						<!--						todo: Сделать no-prefetch и :to="item.href + item.id" когда будет бек -->
+						<!--				todo: Сделать no-prefetch и :to="item.href + item.id" когда будет бек -->
 						<a class="table-link-container">  <!--:to="item.href + item.id"-->
 							<div class="table-link" style="text-align: center;">{{ item.departure_date }}</div>
 						</a>
@@ -57,10 +47,12 @@
 					<td>
 						<div  v-if=" item.status === 'В пути' " style="text-align: center;" class="onWay">{{ item.status + " " }}
 							<br>
-							<i class="fa-solid onway-icon fa-truck"></i></div>
+							<img class="icon" src="~/static/icons/truck-solid.svg" alt="">
+						</div>
 						<div  v-else-if=" item.status === 'Доставлен' " style="text-align: center;" class="delivered">{{ item.status + " " }}
 							<br>
-							<i class="fa-solid delivered-icon fa-calendar-check"></i></div>
+							<img class="icon" src="~/static/icons/calendar-check-solid.svg" alt="">
+						</div>
 						<div  v-else style="text-align: center;">{{ item.status }}</div>
 					</td>
 
@@ -79,18 +71,14 @@
 
 <script>
 
-import TableTemplate from '~/components/UI/Future/TableTemplate'
-
-
 
 // vuex
-import {mapActions, mapState, mapMutations, mapGetters} from "vuex";
+import {mapActions, mapState} from "vuex";
 
 export default {
-	name: 'CustomersTable',
+	name: 'MoveItemTable',
 
 	components: {
-		TableTemplate
 	},
 
 	computed: {
@@ -120,6 +108,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.icon{
+	height: 25px;
+}
 
 .table-link-container {
 	text-decoration: none;

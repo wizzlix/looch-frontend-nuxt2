@@ -23,12 +23,6 @@
 				<tbody>
 
 
-<!--				{id: 1, flied: "Яунлорское", pad: 494, well: 144,name: "рейс 1 (короткая сборка)", date: "2022/04/21 20:45", result: "Успех", malfunction: "Не имеет значения", disc: "представители ЛУЧ: Афонин, Тейтельбаум\n" +-->
-<!--				"\n" +-->
-<!--				"папка проекта +\n" +-->
-<!--				"\n" +-->
-<!--				"Комплекс: только струна" },-->
-
 				<tr v-for="(item, index) in runs" :key="index">
 					<td>
 						<div style="text-align: center;">{{ item.id }}</div>
@@ -90,17 +84,16 @@
 
 <script>
 
-import TableTemplate from '~/components/UI/Future/TableTemplate'
+
 
 export default {
-	name: 'CustomersTable',
+	name: 'FlightsTable',
 
 	components: {
-		TableTemplate
 	},
 
 
-	data: function () {
+	data () {
 		return {
 			headers: ["№", "Месторождение", "Куст","Скважина","Название","Дата начала рейса","Результат","Неисправность","Описание"],
 
@@ -112,35 +105,8 @@ export default {
 						"Комплекс: только струна" },
 			],
 
-			// optionValue: null,
-			// searchValue: '',
-			// endingTemp: "записей",
-			// endingZero: '',
-			// ending: "записей",
-			// smallTextContentAll: "все",
-			// minCount: 1,
-			// maxCount: 10,
-			// allCount: 10,
 		}
 	},
-
-
-	// computed: {
-	// 	filteredCustomers() {
-	// 		return this.customers.filter(item => {
-	// 			return item.name.toLowerCase().includes(this.searchValue.toLowerCase());
-	// 		})
-	// 	},
-	// },
-	// methods: {
-	// 	countRows(value) {
-	// 		if (value === "-1") {
-	// 			console.log(this.customers.slice(0, this.customers.length));
-	// 		} else {
-	// 			console.log(this.customers.slice(0, value + 1));
-	// 		}
-	// 	}
-	// },
 
 	mounted(){
 		$(document).ready(function () {

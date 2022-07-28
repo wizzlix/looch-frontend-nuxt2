@@ -21,11 +21,6 @@
 				</thead>
 				<!--  Body  -->
 				<tbody>
-<!--				id: 4,-->
-<!--				name: "Узел стыковочный верхний",-->
-<!--				designation: "ЛУЧ.596.02.00.00" ,-->
-<!--				executor: "Производство 2" ,-->
-<!--				type: "Узел",-->
 
 				<tr v-for="item in config" :key="item.id">
 					<td>
@@ -83,18 +78,20 @@ export default {
 		])
 	},
 
+	// eslint-disable-next-line vue/order-in-components
 	data () {
 		return {
 			headers: ["№", "Название", "Обозначение", "Исполнитель", "Тип"],
-
 		}
 	},
 
 
+	// eslint-disable-next-line vue/order-in-components
 	mounted(){
 		$(document).ready(function () {
 			$('#example').DataTable();
 		});
+
 		this.getConfig()
 	},
 

@@ -3,7 +3,11 @@
 
         <h3 class="title">
 				<div style="text-align: center;">
-					<i><strong>{{pageName}}</strong></i>
+					<i>
+						<strong>
+							{{pageName}}
+						</strong>
+					</i>
 				</div>
 				</h3>
 

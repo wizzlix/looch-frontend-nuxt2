@@ -18,10 +18,9 @@
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Отправляемые элементы : </span>
 
-					<!--						<label class="typo__label">Tagging</label>-->
 					<multiselect
 						class="form-control"
-						v-model="value"
+						v-model="formAnswer.elements"
 						tag-placeholder="Добавить новый тег"
 						placeholder="Поиск..."
 						label="name"
@@ -31,18 +30,18 @@
 						:multiple="true" >
 
 					</multiselect>
-					<!--						<pre class="language-json"><code>{{ value  }}</code></pre>-->
+
 
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Откуда : </span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<input v-model="formAnswer.fromTransfer" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<div class="input-group element ">
 					<span class="input-group-text" id="inputGroup-sizing-default">Куда : </span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<input v-model="formAnswer.toTransfer" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<div class="input-group  element">
@@ -50,17 +49,17 @@
 <!--					<textarea id="startDate" class="form-control" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">-->
 
 <!--					</textarea>-->
-					<TextEditor class="form-control" />
+					<TextEditor  @getContent="getContentTextbox" class="form-control" />
 				</div>
 
 				<div class="input-group element  date">
 					<span class="input-group-text" id="inputGroup-sizing-default">Дата отправления : </span>
-					<DateEditor />
+					<DateEditor v-model="formAnswer.dateStart" />
 				</div>
 
 				<div class="input-group element  date">
 					<span class="input-group-text" id="inputGroup-sizing-default">Дата получения : </span>
-					<DateEditor />
+					<DateEditor v-model="formAnswer.dateEnd" />
 				</div>
 
 				<ButtonBlue :onClick="showModalFunction" class="BlueButton"  data-bs-toggle="modal" data-bs-target="#exampleModal">Добавить</ButtonBlue>
@@ -94,11 +93,15 @@ export default {
 
 			showModal: false,
 
-			// Multiselect
+			formAnswer:{
+				elements: [],
+				fromTransfer: null,
+				toTransfer: null,
+				comment: null,
+				dateStart: null,
+				dateEnd: null
+			},
 
-			value: [
-				// { name: 'Javascript', code: 'js' }
-			],
 			options: [
 				{ name: '2.4 Сцинтиблок : ЛУЧ.602.01.02.00 - TH7345 154-09.19', id: 1 },
 				{ name: 'Адаптер USB-4UART : ОКР.057.00.02.00 - 22-51-2', id: 2 },
@@ -107,15 +110,10 @@ export default {
 		}
 	},
 
-	computed: {
-	},
-
-
 	methods: {
 		back() {
 			this.$router.push("/move_item")
 		},
-
 		showModalFunction(){
 			this.showModal = !this.showModal
 
@@ -131,7 +129,11 @@ export default {
 		},
 		exit(){
 			this.showModal = !this.showModal
-		}
+		},
+
+		getContentTextbox(content){
+			this.formAnswer.comment = content;
+		},
 	},
 }
 </script>
@@ -180,8 +182,6 @@ export default {
 
 }
 </style>
-
-
 <style lang="scss">
 
 .multiselect__tag {

@@ -1,6 +1,8 @@
 <template>
-		<button @click="onClick"  type="button" class="btn btn-info">
-			<strong><slot></slot></strong>
+		<button type="button"  class="btn btn-info" @click="onClick">
+			<strong>
+				<slot></slot>
+			</strong>
 		</button>
 </template>
 

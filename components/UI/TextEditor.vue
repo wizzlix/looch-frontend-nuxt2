@@ -33,10 +33,13 @@
 
 <script>
 // TODO: Сделать автоссылки, разобраться с подключением библиотек с SSR
-import Quill from "quill";
-import QuillAutoDetectUrl from "quill-auto-detect-url";
 
-Quill.register("modules/autoDetectUrl", QuillAutoDetectUrl);
+
+import Quill from 'quill';
+import AutoLinks from 'quill-auto-links';
+
+Quill.register('modules/autoLinks', AutoLinks);
+
 
 export default {
 	data () {
@@ -59,35 +62,37 @@ export default {
 								[{ 'font': [] }],
 								[{ 'align': [] }],
 								// ['clean']                                         // remove formatting button
-							]
+							],
+						autoLinks: {
+							paste: false,
+							type: true
+						}
 					},
 					placeholder: 'Комментарий...',
 					theme: 'snow',
-					autoDetectUrl: { urlRegularExpression: /(https?:\/\/|www\.)[\w-.]+\.[\w-.]+[\S]+/i,} // or true
+
 				},
+		}
+	},
+	watch: {
+		content(){
+			this.returnContent()
 		}
 	},
 	methods: {
 
 		onEditorChange({ html }) {
 			this.content = html
+		},
+
+		returnContent(){
+			this.$emit('getContent', this.content)
 		}
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-//.container {
-//	width: 60%;
-//	margin: 0 auto;
-//	padding: 50px 0;
-//	.quill-editor {
-//		min-height: 200px;
-//		max-height: 400px;
-//		overflow-y: auto;
-//	}
-//}
-
 .ql-container.ql-snow {
 	border: 0px solid #ccc;
 }

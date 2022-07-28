@@ -23,22 +23,13 @@
 
 
 					<div class="form-check form-switch">
-						<input v-model="checkedToUpButton" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+						<input v-model="checkedToUpButton" @click="isCheckedToUpButton" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
 						<label class="form-check-label" for="flexSwitchCheckDefault">Показывать кнопку прокрутки страницы</label>
-
-						<!--				TODO: Убрать-->
-						<h6>checkedToUp : {{checkedToUpButton}}</h6>
-						<h6 style="color:red"> ПОКА НЕ РАБОТАЕТ</h6>
 
 
 					</div>
 
 					<li><hr class="dropdown-divider" /></li>
-					<!--          <li class="about">-->
-					<!--            <strong>Компания: </strong>{{ userCompanyName }}-->
-					<!--          </li>-->
-
-					<!--          <li><hr class="dropdown-divider" /></li>-->
 
 					<button
 						class="btn btn-danger btn-exit"
@@ -53,7 +44,6 @@
 </template>
 
 <script>
-// import's
 
 export default {
 	name: 'NavUser',
@@ -68,13 +58,17 @@ export default {
 	data() {
 		return {
 			userName: this.user.name,
-			checkedToUpButton: false
+			checkedToUpButton: true
 		}
 	},
 
-	watch: {
-		checkedToUpButton(newValue){
-			return this.$emit("checkedToUpButton", newValue)
+	mounted() {
+		this.isCheckedToUpButton()
+	},
+
+	methods: {
+		isCheckedToUpButton(){
+			return this.$emit("isToUpButton", this.checkedToUpButton)
 		}
 	}
 
@@ -101,7 +95,6 @@ export default {
 .user {
 	list-style: none;
 	margin-bottom: 0rem !important;
-	/*text-shadow: 4px 2px 4px rgba(0, 0, 0, 0.99);*/
 	flex-direction: column;
 	padding-left: 10px !important;
 	margin-left: 10px !important;

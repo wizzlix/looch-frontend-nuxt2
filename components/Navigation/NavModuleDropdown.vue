@@ -15,9 +15,9 @@
       <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <li v-for="(subpage, index) in pageDropdownSubpages" :key="index">
           <nuxt-link no-prefetch class="dropdown-item" :to="subpage.href">
-            <i
-              ><strong>{{ subpage.name }}</strong></i
-            >
+            <i>
+							<strong>{{ subpage.name }}</strong>
+						</i>
             <hr class="dropdown-divider" />
           </nuxt-link>
         </li>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-// import's
+
 
 export default {
   name: 'NavModuleDropdown',

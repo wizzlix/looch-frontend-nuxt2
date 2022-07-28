@@ -72,36 +72,9 @@ export default {
 	data () {
 		return {
 			headers: ["№", "Фамилия",  "Имя",  "Отчество"],
-
-			// optionValue: null,
-			// searchValue: '',
-			// endingTemp: "записей",
-			// endingZero: '',
-			// ending: "записей",
-			// smallTextContentAll: "все",
-			// minCount: 1,
-			// maxCount: 10,
-			// allCount: 10,
 		}
 	},
 
-
-	// computed: {
-	// 	filteredCustomers() {
-	// 		return this.customers.filter(item => {
-	// 			return item.name.toLowerCase().includes(this.searchValue.toLowerCase());
-	// 		})
-	// 	},
-	// },
-	// methods: {
-	// 	countRows(value) {
-	// 		if (value === "-1") {
-	// 			console.log(this.customers.slice(0, this.customers.length));
-	// 		} else {
-	// 			console.log(this.customers.slice(0, value + 1));
-	// 		}
-	// 	}
-	// },
 
 	mounted(){
 		$(document).ready(function () {
@@ -109,10 +82,6 @@ export default {
 		});
 		this.getEmployees()
 	},
-
-	// beforeMount() {
-	// 	this.getEmployees()
-	// }
 
 }
 </script>

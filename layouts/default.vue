@@ -5,12 +5,12 @@
     </section>
 
     <header id="header">
-      <NavBar :user="user" :pages="pages"/>
+      <NavBar :user="user" :pages="pages" @isToUpButton="isToUpButton"/>
     </header>
 
 		<div class="wrapper">
 				<nuxt />
-				<to-up-button/>
+				<to-up-button :showToUpButton="showToUpButton"/>
 		</div>
 
 		<footer>
@@ -34,6 +34,12 @@ export default Vue.extend({
   name: 'NuxtWrapper',
   components: {ToUpButton, NavBar, PreloaderPage, FooterTemplate},
 
+	data(){
+		return{
+			showToUpButton: true
+		}
+	},
+
 	computed: {
 		...mapState('pages', ['pages']),
 		...mapState('user', ['user']),
@@ -46,6 +52,10 @@ export default Vue.extend({
 		...mapActions('user', [
 			'getUser'
 		]),
+
+		isToUpButton(value){
+			this.showToUpButton = value
+		}
 	},
 
 

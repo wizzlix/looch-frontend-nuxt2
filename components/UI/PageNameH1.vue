@@ -1,6 +1,14 @@
 <template>
     <div id="PageNameH1">
-        <h1 class="title"><center><i><strong>{{ pageName }}</strong></i></center></h1>
+        <h1 class="title">
+					<div style="text-align: center;">
+						<i>
+							<strong>
+								{{ pageName }}
+							</strong>
+						</i>
+					</div>
+				</h1>
 
         <div class="container-fluid">
             <hr class="dropdown-divider">

@@ -15,15 +15,23 @@
 
 			<section class="form table-responsive">
 
+<!--				name-->
+<!--				designation-->
+<!--				imgConfig-->
+<!--				executor-->
+<!--				type-->
+<!--				isSerial-->
+<!--				isStructure-->
+
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Название : </span>
-					<input type="text" placeholder="Введите название " class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<input v-model="formAnswer.name" type="text" placeholder="Введите название " class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Обозначение : </span>
-					<input type="text" placeholder="Введите обозначение" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<input v-model="formAnswer.designation" type="text" placeholder="Введите обозначение" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<div class="input-group element">
@@ -36,7 +44,7 @@
 					<multiselect
 						aria-describedby="inputGroup-sizing-default"
 
-						v-model="selectedExecutor"
+						v-model="formAnswer.executor"
 						class="form-control"
 						tag-placeholder="Добавить новый тег"
 						placeholder="Поиск..."
@@ -55,7 +63,7 @@
 					<multiselect
 						aria-describedby="inputGroup-sizing-default"
 
-						v-model="selectedType"
+						v-model="formAnswer.type"
 						class="form-control"
 						tag-placeholder="Добавить новый тег"
 						placeholder="Поиск..."
@@ -71,7 +79,7 @@
 
 				<div class="input-group mb-3">
 					<div class="input-group-text">
-						<input class="form-check-input mt-0" checked type="checkbox" value="" aria-label="Checkbox for following text input">
+						<input v-model="formAnswer.isSerial" class="form-check-input mt-0" checked type="checkbox" value="" aria-label="Checkbox for following text input">
 					</div>
 					<span class="input-group-text" id="inputGroup-sizing-default">Наличие серийного номера</span>
 				</div>
@@ -79,7 +87,7 @@
 					<div class="sep"></div>
 				<div class="input-group mb-3">
 					<div class="input-group-text">
-						<input class="form-check-input mt-0" checked type="checkbox" value="" aria-label="Checkbox for following text input">
+						<input  v-model="formAnswer.isStructure" class="form-check-input mt-0" checked type="checkbox" value="" aria-label="Checkbox for following text input">
 					</div>
 					<span class="input-group-text" id="inputGroup-sizing-default">Входит в структуру сборки заказа</span>
 				</div>
@@ -113,14 +121,18 @@ export default {
 	components: { PageNameH1, ButtonBlue,ModalWindow,Multiselect,addElement},
 	data(){
 		return{
-			pageName: 'Новыая спецификация',
-
+			pageName: 'Новая спецификация',
 			showModal: false,
 
 
-			selectedType: [
-
-		],
+			formAnswer:{
+				name: null,
+				designation: null,
+				executor: null,
+				type: null,
+				isSerial: true,
+				isStructure: true,
+			},
 
 			elements: [
 				{ name: '2.4 Сцинтиблок : ЛУЧ.602.01.02.00 - TH7345 154-09.19', id: 1 },
@@ -134,9 +146,6 @@ export default {
 			{ name: 'Узел', id: 3 }
 		],
 
-			selectedExecutor: [
-			// { name: 'Javascript', code: 'js' }
-		],
 			executors: [
 			{ name: 'Производство 1', id: 1 },
 			{ name: 'Производство 2', id: 2 },
@@ -145,10 +154,6 @@ export default {
 
 		}
 	},
-
-	computed: {
-	},
-
 
 	methods: {
 		back() {
@@ -193,10 +198,6 @@ export default {
 
 .BlueButton{
 	align-self: flex-end;
-}
-
-.modal{
-	z-index: 9999;
 }
 
 .form{

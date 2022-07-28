@@ -16,25 +16,24 @@
 			<section class="form table-responsive">
 
 
-
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Номер заказа : </span>
-					<SelectNumber value="" class="form-control" aria-describedby="inputGroup-sizing-default"/>
+					<SelectNumber v-model="formAnswer.orderNumber"  value="" class="form-control" aria-describedby="inputGroup-sizing-default"/>
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Дата открытия заказа : </span>
-					<DateEditor class="form-control" aria-describedby="inputGroup-sizing-default"/>
+					<DateEditor v-model="formAnswer.orderDateStart" class="form-control" aria-describedby="inputGroup-sizing-default"/>
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Дата планового закрытия : </span>
-					<DateEditor class="form-control" aria-describedby="inputGroup-sizing-default" />
+					<DateEditor v-model="formAnswer.orderDateEndImage" class="form-control" aria-describedby="inputGroup-sizing-default" />
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Дата фактического закрытия : </span>
-					<DateEditor class="form-control" aria-describedby="inputGroup-sizing-default" />
+					<DateEditor v-model="formAnswer.orderDateEndFact" class="form-control" aria-describedby="inputGroup-sizing-default" />
 				</div>
 
 				<div class="input-group element">
@@ -43,7 +42,7 @@
 					<multiselect
 						aria-describedby="inputGroup-sizing-default"
 
-						v-model="selectedCustomer"
+						v-model="formAnswer.customer"
 						class="form-control"
 						tag-placeholder="Добавить новый тег"
 						placeholder="Поиск..."
@@ -59,7 +58,7 @@
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Комментарий : </span>
-					<TextEditor class="form-control" id="startDate" />
+					<TextEditor @getContent="getContentTextbox" class="form-control" id="startDate" />
 				</div>
 
 				<addElement :elements="elements" page-name="Из чего состоит:"/>
@@ -100,6 +99,18 @@ export default {
 		return{
 			pageName: 'Новый заказ',
 
+
+			formAnswer: {
+				comment: null,
+				orderNumber: null,
+				orderDateStart: null,
+				orderDateEndImage: null,
+				orderDateEndFact: null,
+				customer: [],
+
+				elements: [],
+			},
+
 			showModal: false,
 
 			id_element: 0,
@@ -128,8 +139,6 @@ export default {
 		}
 	},
 
-	computed: {
-	},
 
 
 	methods: {
@@ -154,6 +163,10 @@ export default {
 			this.showModal = !this.showModal
 		},
 
+
+		getContentTextbox(content){
+			this.formAnswer.comment = content;
+		},
 
 		nameId() {
 			const element = "element_" + (this.id_element).toString();

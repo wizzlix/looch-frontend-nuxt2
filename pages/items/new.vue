@@ -10,7 +10,7 @@
 			</section>
 
 			<section class="BlueButtonContainer">
-				<ButtonBlue :onClick="back" class="BlueButton">Назад</ButtonBlue>
+				<ButtonBlue :on-click="back" class="BlueButton">Назад</ButtonBlue>
 			</section>
 
 			<section class="form table-responsive">
@@ -18,17 +18,17 @@
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Название : </span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<input v-model="formAnswer.name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Обозначение : </span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<input v-model="formAnswer.designation" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Серийный номер : </span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<input v-model="formAnswer.serial" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<div class="input-group element">
@@ -36,7 +36,7 @@
 					<multiselect
 						aria-describedby="inputGroup-sizing-default"
 
-						v-model="selectedType"
+						v-model="formAnswer.type"
 						class="form-control"
 						tag-placeholder="Добавить новый тег"
 						placeholder="Поиск..."
@@ -53,22 +53,22 @@
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Дата изготовления : </span>
-					<DateEditor/>
+					<DateEditor v-model="formAnswer.date"/>
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Макс. время циркуляции : </span>
-					<SelectNumber value=""/>
+					<SelectNumber v-model="formAnswer.max_time_cir" value=""/>
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Красная погрешность : </span>
-					<SelectNumber value="100"/>
+					<SelectNumber v-model="formAnswer.redError" value="100"/>
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Желтая погрешность : </span>
-					<SelectNumber value="200"/>
+					<SelectNumber v-model="formAnswer.yellowError" value="200"/>
 				</div>
 
 
@@ -77,7 +77,7 @@
 					<multiselect
 						aria-describedby="inputGroup-sizing-default"
 
-						v-model="selectedCustomer"
+						v-model="formAnswer.customer"
 						class="form-control"
 						tag-placeholder="Добавить новый тег"
 						placeholder="Поиск..."
@@ -95,7 +95,7 @@
 					<span class="input-group-text" id="inputGroup-sizing-default">Кто пользуется : </span>
 					<multiselect
 						class="form-control"
-						v-model="whoUsed"
+						v-model="formAnswer.whoUsed"
 						tag-placeholder="Добавить новый тег"
 						placeholder="Поиск..."
 						label="name"
@@ -112,7 +112,7 @@
 					<!--					<textarea id="startDate" class="form-control" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">-->
 
 					<!--					</textarea>-->
-					<TextEditor class="form-control" id="startDate" />
+					<TextEditor @getContent="getContentTextbox" class="form-control" id="startDate" />
 				</div>
 
 
@@ -151,42 +151,39 @@ export default {
 			showModal: false,
 
 
-			selectedType: [
+			formAnswer: {
+				name: null,
+				designation: null,
+				serial: null,
+				date: null,
+				comment: null,
 
-			],
+				max_time_cir: null,
+				redError: 100,
+				yellowError: 200,
+
+				type: [],
+				customer: [],
+				whoUsed: [],
+			},
 
 			types: [
 				{ name: 'Модуль', id: 1 },
 				{ name: 'Плата', id: 2 },
 				{ name: 'Узел', id: 3 }
 			],
-
-			selectedCustomer: [
-
-			],
-
 			customers: [
 				{ name: 'Baker Hughes', id: 1 },
 				{ name: 'ПАО "Сургутнефтегаз" УБР-1', id: 2 },
 				{ name: 'ООО "ОРИОН"', id: 3 }
 			],
-
-			whoUsed: [
-				// { name: 'Javascript', code: 'js' }
-			],
-
 		}
 	},
-
-	computed: {
-	},
-
 
 	methods: {
 		back() {
 			this.$router.push("/items")
 		},
-
 		showModalFunction(){
 			this.showModal = !this.showModal
 
@@ -202,7 +199,11 @@ export default {
 		},
 		exit(){
 			this.showModal = !this.showModal
-		}
+		},
+
+		getContentTextbox(content){
+			this.formAnswer.comment = content;
+		},
 	},
 }
 </script>

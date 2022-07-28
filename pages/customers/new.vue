@@ -18,7 +18,7 @@
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Наименование организации : </span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<input v-model="formAnswer.customerName" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<ButtonBlue :onClick="showModalFunction" class="BlueButton"  data-bs-toggle="modal" data-bs-target="#exampleModal">Добавить</ButtonBlue>
@@ -51,15 +51,11 @@ export default {
 
 			showModal: false,
 
-			// Multiselect
+			formAnswer:{
+				customerName: null,
+			},
 
-			value: [
-				// { name: 'Javascript', code: 'js' }
-			],
 		}
-	},
-
-	computed: {
 	},
 
 

@@ -28,16 +28,6 @@
 						<div style="text-align: center;">{{ item.id }}</div>
 					</td>
 
-
-<!--					id: 1,-->
-<!--					orderNumber: "400" ,-->
-<!--					orderOpeningDate: "2020/11/27" ,-->
-<!--					scheduledClosingDate: "2020/12/31" ,-->
-<!--					dateOfActualClosing: "" ,-->
-<!--					customer: "ПТО",-->
-<!--					comment: "№20379014, 20379015, 20379016, 20379017, 20379018, 20379019, 20370020, 20379021, 20379022, 20379023" ,-->
-
-
 					<td>
 						<nuxt-link no-prefetch class="table-link-container" :to="'orders/' + item.id">
 							<div class="table-link" style="text-align: center;">{{ item.orderNumber }}</div>
@@ -92,51 +82,23 @@ export default {
 	},
 
 
-	data: function () {
+	data () {
 		return {
 			headers: ["№", "Номер заказа",  "Дата открытия заказа",  "Дата планового закрытия", "Дата фактического закрытия", "Заказчик", "Комментарий"],
 
 
-			// optionValue: null,
-			// searchValue: '',
-			// endingTemp: "записей",
-			// endingZero: '',
-			// ending: "записей",
-			// smallTextContentAll: "все",
-			// minCount: 1,
-			// maxCount: 10,
-			// allCount: 10,
 		}
 	},
 
-
-	// computed: {
-	// 	filteredCustomers() {
-	// 		return this.customers.filter(item => {
-	// 			return item.name.toLowerCase().includes(this.searchValue.toLowerCase());
-	// 		})
-	// 	},
-	// },
-	// methods: {
-	// 	countRows(value) {
-	// 		if (value === "-1") {
-	// 			console.log(this.customers.slice(0, this.customers.length));
-	// 		} else {
-	// 			console.log(this.customers.slice(0, value + 1));
-	// 		}
-	// 	}
-	// },
 
 	mounted(){
 		$(document).ready(function () {
 			$('#example').DataTable();
 		});
+
 		this.getOrders()
 	},
-	//
-	// beforeMount() {
-	// 	this.getOrders()
-	// }
+
 
 }
 </script>

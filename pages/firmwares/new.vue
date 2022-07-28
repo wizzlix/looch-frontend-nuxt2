@@ -20,7 +20,8 @@
 
 				<div class="input-group  element">
 					<span class="input-group-text comment" id="inputGroup-sizing-default">Описание : </span>
-					<TextEditor class="form-control" id="startDate" />
+<!--					TODO: Не работает v-model-->
+					<TextEditor @getContent="getContentTextbox" class="form-control" id="startDate" />
 				</div>
 
 				<div class="input-group  element">
@@ -58,11 +59,14 @@ export default {
 
 			showModal: false,
 
+			formAnswer:{
+				description: "",
+			}
+
 		}
 	},
 
-	computed: {
-	},
+
 
 
 	methods: {
@@ -85,6 +89,10 @@ export default {
 		},
 		exit(){
 			this.showModal = !this.showModal
+		},
+
+		getContentTextbox(content){
+			this.formAnswer.description = content;
 		}
 	},
 }

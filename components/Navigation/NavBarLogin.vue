@@ -3,9 +3,9 @@
 		<div id="top"></div>
 		<nav class="looch-navbar navbar navbar-expand-lg navbar-dark">
 			<div class="container-fluid">
-				<nuxt-link class="navbar-brand" to="/"
-				><img src="~/static/logo.png" alt="ЛУЧ" title="Главная" style="cursor: pointer; "
-				/></nuxt-link>
+				<nuxt-link class="navbar-brand" to="/">
+					<img src="~/static/logo.png" alt="ЛУЧ" title="Главная" style="cursor: pointer; "/>
+				</nuxt-link>
 
 				<button
 					style="visibility: hidden"

@@ -21,11 +21,6 @@
 				<!--  Body  -->
 				<tbody>
 
-<!--				id:1,-->
-<!--				name: "4_2_ЛУЧ-172 Тестирование скважинной части комплекса (ред 11 от 2021_11_30)",-->
-<!--				dis:"Инструкция \"Тестирование скважинной части\"",-->
-<!--				download: {text: "Скачать", href: ""}-->
-
 				<tr v-for="(item, index) in firmwares" :key="index">
 					<td>
 						<div style="text-align: center;">{{ item.id }}</div>
@@ -43,7 +38,9 @@
 
 					<td>
 						<div class="table-link-container">
-							<a class="table-link download" style="text-align: center;" :href="item.download.href" download>{{ item.download.text }} <i class="fa-solid fa-download"></i></a>
+							<a class="table-link download" style="text-align: center;" :href="item.download.href" download>{{ item.download.text }}
+								<img  class="table-link download-icon" src="~/static/icons/download-solid.svg" alt="">
+							</a>
 						</div>
 					</td>
 				</tr>
@@ -85,10 +82,6 @@ export default {
 		this.getFirmwares()
 	},
 
-	// beforeMount() {
-	// 	this.getFirmwares()
-	// }
-
 }
 </script>
 
@@ -110,6 +103,10 @@ export default {
  }
 }
 
+.download-icon{
+	width: 20px;
+	height: 20px;
+}
 .download{
 	font-weight: bolder;
 

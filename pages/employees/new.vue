@@ -18,17 +18,17 @@
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Фамилия : </span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<input v-model="formAnswer.surname" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Имя : </span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<input v-model="formAnswer.name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<div class="input-group element">
 					<span class="input-group-text" id="inputGroup-sizing-default">Отчество : </span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<input v-model="formAnswer.fname" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 
 				<ButtonBlue :onClick="showModalFunction" class="BlueButton"  data-bs-toggle="modal" data-bs-target="#exampleModal">Добавить</ButtonBlue>
@@ -61,10 +61,13 @@ export default {
 
 			showModal: false,
 
-		}
-	},
+			formAnswer:{
+				name: null,
+				surname: null,
+				fname: null
+			}
 
-	computed: {
+		}
 	},
 
 

@@ -76,6 +76,7 @@ export default {
 		$(document).ready(function () {
 			$('#example').DataTable();
 		});
+
 		this.getCustomers()
 
 	},

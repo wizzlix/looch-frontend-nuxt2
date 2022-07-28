@@ -1,6 +1,8 @@
 <template>
 	<div class="flex">
-		<ButtonBlue id="button" class="to-up btn-primary" :on-click="ToUp" title="Наверх"></ButtonBlue>
+		<ButtonBlue id="button" class="to-up btn-primary" :on-click="ToUp" title="Наверх">
+			<img class="icon" src="/icons/toUp.png" alt="">
+		</ButtonBlue>
 	</div>
 </template>
 
@@ -11,11 +13,18 @@ import ButtonBlue from "~/components/UI/ButtonBlue";
 export default {
 	components: {ButtonBlue},
 
+	props:{
+		showToUpButton: {
+			type: Boolean,
+			require: true
+		}
+	},
 
 	mounted(){
 			const btn = $('#button');
+			const isShow = this.showToUpButton
 			$(window).scroll(function() {
-				if ($(window).scrollTop() > 250) {
+				if ($(window).scrollTop() > 250 && isShow) {
 					btn.addClass('show');
 				} else {
 					btn.removeClass('show');
@@ -38,6 +47,11 @@ export default {
 		width: 99%;
 		display: inline-flex;
 		justify-content: flex-end;
+	}
+
+	.icon{
+		height: 30px;
+		filter: invert(1);
 	}
 
 	#button.show {
@@ -76,15 +90,6 @@ export default {
 			background-color: #555;
 		}
 
-		&::after {
-			content: "\f077";
-			font-family: FontAwesome,serif;
-			font-weight: normal;
-			font-style: normal;
-			font-size: 2em;
-			line-height: 50px;
-			color: #fff;
-		}
 
 	}
 
