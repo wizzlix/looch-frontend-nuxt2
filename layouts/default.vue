@@ -1,27 +1,27 @@
 <template>
-  <div>
-    <section id="preloader">
-      <PreloaderPage />
-    </section>
+	<div>
+		<section id="preloader">
+			<PreloaderPage/>
+		</section>
 
-    <header id="header">
-      <NavBar :user="user" :pages="pages" @isToUpButton="isToUpButton"/>
-    </header>
+		<header id="header">
+			<NavBar :user="user" :pages="pages" @isToUpButton="isToUpButton"/>
+		</header>
 
-		<div class="wrapper">
-				<nuxt />
-				<to-up-button :showToUpButton="showToUpButton"/>
+		<div className="wrapper">
+			<nuxt/>
+			<to-up-button :showToUpButton="showToUpButton"/>
 		</div>
 
 		<footer>
-			<FooterTemplate />
+			<FooterTemplate/>
 		</footer>
-  </div>
+	</div>
 </template>
 
 <script>
 import Vue from 'vue'
-import { mapActions, mapState} from "vuex";
+import {mapActions, mapState} from "vuex";
 
 import NavBar from '~/components/Navigation/NavBar.vue'
 import PreloaderPage from '~/components/UI/PreloaderPage.vue'
@@ -31,11 +31,11 @@ import ToUpButton from "~/components/UI/ToUpButton";
 
 
 export default Vue.extend({
-  name: 'NuxtWrapper',
-  components: {ToUpButton, NavBar, PreloaderPage, FooterTemplate},
+	name: 'NuxtWrapper',
+	components: {ToUpButton, NavBar, PreloaderPage, FooterTemplate},
 
-	data(){
-		return{
+	data() {
+		return {
 			showToUpButton: true
 		}
 	},
@@ -53,14 +53,14 @@ export default Vue.extend({
 			'getUser'
 		]),
 
-		isToUpButton(value){
+		isToUpButton(value) {
 			this.showToUpButton = value
 		}
 	},
 
 
 	// eslint-disable-next-line vue/order-in-components
-	mounted(){
+	mounted() {
 		this.getPages()
 		this.getUser()
 	}
@@ -70,22 +70,22 @@ export default Vue.extend({
 
 <style lang="css">
 * {
-  font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Roboto Condensed', sans-serif;
 }
 
 /* Прижатие футера */
 .wrapper {
 	min-height: 83.4vh;
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 footer {
-  margin-top: auto;
+	margin-top: auto;
 }
 
 body {
-  min-width: 360px;
+	min-width: 360px;
 }
 
 </style>

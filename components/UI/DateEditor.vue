@@ -1,13 +1,13 @@
 <template>
 	<div>
 		<input
-								type="datetime-local"
-								class="form-control"
+			type="datetime-local"
+			class="form-control"
 
-								aria-describedby="inputGroup-sizing-default"
+			aria-describedby="inputGroup-sizing-default"
 
-								:value="value"
-								@input="$emit('input', $event.target.value)">
+			:value="value"
+			@input="$emit('input', $event.target.value)">
 	</div>
 </template>
 

@@ -40,14 +40,14 @@ export default {
 	// 					this.filterObjects.push(element)
 	// 				}
 	// 				return element
-	// 			})  
+	// 			})
 	// 			return this.$emit('search', this.filterObjects )
 	// 		} else {
 	// 			this.filterObjects = this.search
 	// 			return this.filterObjects
 	// 		}
-		
-	// 		// console.log("--------------------------------")
+
+
   //     // return this.search.filter(element => {
 	// 		// 	return console.log(element.id.toString() + " " + element.name.includes(this.searchValue).toString());
 	// 		// })

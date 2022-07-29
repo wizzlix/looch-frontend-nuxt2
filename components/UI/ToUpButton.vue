@@ -22,7 +22,8 @@ export default {
 
 	mounted(){
 			const btn = $('#button');
-			const isShow = this.showToUpButton
+			const isShow = Number(localStorage.isShowToUp)
+			console.log(Number(localStorage.isShowToUp))
 			$(window).scroll(function() {
 				if ($(window).scrollTop() > 250 && isShow) {
 					btn.addClass('show');

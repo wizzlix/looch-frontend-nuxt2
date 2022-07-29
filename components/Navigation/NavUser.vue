@@ -23,8 +23,8 @@
 
 
 					<div class="form-check form-switch">
-						<input v-model="checkedToUpButton" @click="isCheckedToUpButton" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-						<label class="form-check-label" for="flexSwitchCheckDefault">Показывать кнопку прокрутки страницы</label>
+						<input @input="reload" id="flexSwitchCheckDefault" v-model="checkedToUpButton" checked class="form-check-input" type="checkbox">
+						<label class="form-check-label" for="flexSwitchCheckDefault">Показывать кнопку прокрутки страницы вверх</label>
 
 
 					</div>
@@ -45,6 +45,7 @@
 
 <script>
 
+
 export default {
 	name: 'NavUser',
 
@@ -58,17 +59,43 @@ export default {
 	data() {
 		return {
 			userName: this.user.name,
-			checkedToUpButton: true
 		}
 	},
 
-	mounted() {
-		this.isCheckedToUpButton()
+	computed: {
+
+		checkedToUpButton: {
+				set (newValue) {
+
+					if (newValue) {
+						localStorage.setItem('isShowToUp', JSON.stringify(1));
+						$('#flexSwitchCheckDefault').attr("checked", "checked")
+						return true
+					} else {
+						localStorage.setItem('isShowToUp', JSON.stringify(0));
+						$('#flexSwitchCheckDefault').removeAttr("checked")
+						return false
+					}
+				},
+
+				get () {
+					return localStorage.isShowToUp === "1";
+					}
+			}
 	},
 
-	methods: {
-		isCheckedToUpButton(){
-			return this.$emit("isToUpButton", this.checkedToUpButton)
+	mounted() {
+		if (this.checkedToUpButton){
+			$('#flexSwitchCheckDefault').attr("checked", "checked")
+		} else {
+			$('#flexSwitchCheckDefault').removeAttr("checked")
+		}
+
+	},
+
+	methods:{
+		reload(){
+			location.reload()
 		}
 	}
 
